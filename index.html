@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0045)file:///C:/Users/gusta/Downloads/index_1.html -->
+<!-- saved from url=(0057)file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html -->
 <html lang="de"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -238,6 +238,35 @@ ul{list-style:none}
 .tile--dark .day-total b{color:var(--on-dark)}
 
 /* ============================================================
+   TAGESBUDGET — summary stats + per-day range bars
+   ============================================================ */
+.budget-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;
+  background:var(--hairline);border:1px solid var(--hairline);border-radius:18px;overflow:hidden;margin-top:40px}
+.budget-stat{background:var(--canvas);padding:24px 26px;display:flex;flex-direction:column;gap:6px}
+.budget-stat-label{color:var(--ink-48)}
+.budget-stat-value{color:var(--ink)}
+.budget-stat-meta{color:var(--ink-48)}
+
+.budget-list{margin-top:8px;border-top:1px solid var(--hairline)}
+.budget-row{display:grid;grid-template-columns:152px 1fr 124px;align-items:center;gap:24px;
+  padding:20px 0;border-bottom:1px solid var(--hairline)}
+.budget-when{display:flex;flex-direction:column;gap:2px}
+.budget-day{color:var(--ink)}
+.budget-date{color:var(--ink-48)}
+.budget-mid{min-width:0}
+.budget-label{color:var(--ink-80);margin-bottom:8px;display:block}
+.budget-track{position:relative;height:6px;background:var(--divider-soft);border-radius:3px}
+.budget-fill{position:absolute;top:0;bottom:0;background:var(--primary);border-radius:3px;min-width:6px}
+.budget-amount{text-align:right;color:var(--ink-48);white-space:nowrap}
+.budget-amount b{color:var(--ink);font-weight:600}
+.budget-foot{display:flex;justify-content:space-between;align-items:baseline;gap:20px;margin-top:24px;flex-wrap:wrap}
+.budget-foot b{color:var(--ink)}
+@media (max-width:640px){
+  .budget-row{grid-template-columns:1fr;gap:8px;padding:16px 0}
+  .budget-amount{text-align:left}
+}
+
+/* ============================================================
    FOOTER — parchment, dense-link columns
    ============================================================ */
 .footer{background:var(--parchment);color:var(--ink-80);padding:64px 22px}
@@ -322,27 +351,44 @@ ul{list-style:none}
 
 .sched .badge,.tile--dark .badge{background:rgba(41,151,255,0.18);color:var(--link-on-dark)}
 .sched-badge{margin-top:12px}
+
+/* ============================================================
+   IDEEN TOOL — TikTok-Erkennung, lokal gespeichert
+   ============================================================ */
+.idea-tool{margin-top:40px;max-width:640px}
+.idea-input{display:flex;gap:10px;flex-wrap:wrap}
+.idea-field{flex:1 1 240px;min-width:0;background:rgba(255,255,255,0.7);
+  border:1px solid var(--hairline);border-radius:14px;padding:13px 16px;color:var(--ink);
+  font-family:var(--font-text);font-size:17px;font-weight:400;letter-spacing:-0.374px;
+  outline:none;transition:border-color .2s ease,box-shadow .2s ease}
+.idea-field::placeholder{color:var(--ink-48)}
+.idea-field:focus{border-color:var(--primary-focus);box-shadow:0 0 0 3px rgba(0,113,227,0.18)}
+.idea-add{flex:0 0 auto}
+.idea-add[disabled]{opacity:.55;cursor:default}
+.idea-hint{color:var(--ink-48);margin-top:12px}
+.tile--dark .idea-hint{color:var(--muted-on-dark)}
+.tile--dark .idea-del{color:var(--muted-on-dark)}
+.tile--dark .idea-del:hover{color:var(--on-dark)}
+.idea-cards{margin-top:32px}
+.idea-card{overflow:hidden}
+.idea-thumb{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:12px;
+  margin-bottom:4px;background:var(--parchment)}
+.idea-author{color:var(--ink-48)}
+.idea-cap{color:var(--ink-80);display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.idea-row{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:14px}
+.idea-del{margin-left:auto;background:transparent;border:0;cursor:pointer;color:var(--ink-48);
+  font-family:var(--font-text);font-size:12px;font-weight:400;letter-spacing:-0.12px;line-height:1;padding:6px 2px;
+  transition:color .2s ease}
+.idea-del:hover{color:var(--ink)}
+.is-hidden{display:none !important}
 </style>
-<style id="claude-agent-animation-styles">
-      @keyframes claude-pulse {
-        0%, 100% { opacity: 0.6; }
-        50% { opacity: 1; }
-      }
-      #claude-agent-glow-border-inner {
-        animation: claude-pulse 2s ease-in-out infinite;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        #claude-agent-glow-border-inner {
-          animation: none;
-        }
-      }
-    </style></head>
+</head>
 <body>
 
 <!-- ===================== STICKY FROSTED BLACK NAV ===================== -->
 <header class="nav">
   <div class="nav-inner">
-    <a class="nav-mark" href="file:///C:/Users/gusta/Downloads/index_1.html#top" aria-label="Startseite">
+    <a class="nav-mark" href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#top" aria-label="Startseite">
       <svg viewBox="0 0 16 18" fill="currentColor" aria-hidden="true"><path d="M8 0C4.7 0 2 2.7 2 6c0 4.4 6 12 6 12s6-7.6 6-12c0-3.3-2.7-6-6-6zm0 8.3A2.3 2.3 0 1 1 8 3.7a2.3 2.3 0 0 1 0 4.6z"></path></svg>
     </a>
     <span class="nav-city t-nav">Barcelona</span>
@@ -352,12 +398,12 @@ ul{list-style:none}
         <svg viewBox="0 0 17 17" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 4.5h15M1 12.5h15"></path></svg>
       </label>
       <ul class="nav-days t-nav">
-        <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag1">Tag 1</a></li>
-        <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag2">Tag 2</a></li>
-        <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag3">Tag 3</a></li>
-        <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag4">Tag 4</a></li>
-        <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag5">Tag 5</a></li>
-        <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag6">Tag 6</a></li>
+        <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag1">Tag 1</a></li>
+        <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag2">Tag 2</a></li>
+        <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag3">Tag 3</a></li>
+        <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag4">Tag 4</a></li>
+        <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag5">Tag 5</a></li>
+        <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag6">Tag 6</a></li>
       </ul>
     </div>
   </div>
@@ -366,15 +412,17 @@ ul{list-style:none}
 <!-- ===================== FROSTED SUB-NAV ===================== -->
 <div class="subnav">
   <div class="subnav-inner">
-    <a class="subnav-name t-tagline" href="file:///C:/Users/gusta/Downloads/index_1.html#top">Reiseplan</a>
+    <a class="subnav-name t-tagline" href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#top">Reiseplan</a>
     <div class="subnav-right">
       <div class="subnav-links t-utility">
-        <a href="file:///C:/Users/gusta/Downloads/index_1.html#uebersicht">Übersicht</a>
-        <a href="file:///C:/Users/gusta/Downloads/index_1.html#essen">Essen &amp; Bars</a>
-        <a href="file:///C:/Users/gusta/Downloads/index_1.html#straende">Strände</a>
-        <a href="file:///C:/Users/gusta/Downloads/index_1.html#tipps">Tipps</a>
+        <a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#uebersicht">Übersicht</a>
+        <a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#essen">Essen &amp; Bars</a>
+        <a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#straende">Strände</a>
+        <a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tipps">Tipps</a>
+        <a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#budget">Budget</a>
+        <a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#ideen">Ideen</a>
       </div>
-      <a class="btn btn--sm" href="file:///C:/Users/gusta/Downloads/index_1.html#tag1">Tagesplan</a>
+      <a class="btn btn--sm" href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag1">Tagesplan</a>
     </div>
   </div>
 </div>
@@ -387,8 +435,8 @@ ul{list-style:none}
     <h1 class="t-hero">Barcelona.</h1>
     <p class="hero-sub t-lead">Fünf Tage Strand, Gaudí und Nächte, die spät enden.</p>
     <div class="hero-cta">
-      <a class="btn" href="file:///C:/Users/gusta/Downloads/index_1.html#tag1">Tagesplan ansehen</a>
-      <a class="btn-ghost link-dark" href="file:///C:/Users/gusta/Downloads/index_1.html#uebersicht">Auf einen Blick</a>
+      <a class="btn" href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag1">Tagesplan ansehen</a>
+      <a class="btn-ghost link-dark" href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#uebersicht">Auf einen Blick</a>
     </div>
   </div>
 </section>
@@ -818,6 +866,127 @@ ul{list-style:none}
   </div>
 </section>
 
+<!-- ===================== BUDGET (parchment) ===================== -->
+<section id="budget" class="tile tile--parchment">
+  <div class="tile-inner">
+    <span class="eyebrow t-caption-strong">Übersicht</span>
+    <h2 class="headline t-display">Tagesbudget.</h2>
+    <p class="lead t-lead">Was jeder Tag ungefähr kostet — pro Person, ohne Flug und Hotel.</p>
+
+    <div class="budget-summary">
+      <div class="budget-stat">
+        <span class="budget-stat-label t-caption">Fixkosten gesamt</span>
+        <span class="budget-stat-value t-display">≈ 3.079 €</span>
+        <span class="budget-stat-meta t-caption">Flüge 611 € + Hotel 2.468 €</span>
+      </div>
+      <div class="budget-stat">
+        <span class="budget-stat-label t-caption">Variable Kosten</span>
+        <span class="budget-stat-value t-display">535–805 €</span>
+        <span class="budget-stat-meta t-caption">p.P. · über alle 6 Tage</span>
+      </div>
+      <div class="budget-stat">
+        <span class="budget-stat-label t-caption">Teuerster Tag</span>
+        <span class="budget-stat-value t-display">Tag 3</span>
+        <span class="budget-stat-meta t-caption">Sightseeing &amp; Shopping · ≈ 180–260 €</span>
+      </div>
+    </div>
+
+    <div class="budget-list">
+      <div class="budget-row">
+        <div class="budget-when">
+          <span class="budget-day t-body-strong">Tag 1</span>
+          <span class="budget-date t-caption">27. Juli</span>
+        </div>
+        <div class="budget-mid">
+          <span class="budget-label t-caption">Ankunft</span>
+          <div class="budget-track"><div class="budget-fill" style="left:0%;width:6%"></div></div>
+        </div>
+        <div class="budget-amount t-body"><b>≈ 15 €</b></div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-when">
+          <span class="budget-day t-body-strong">Tag 2</span>
+          <span class="budget-date t-caption">28. Juli</span>
+        </div>
+        <div class="budget-mid">
+          <span class="budget-label t-caption">Strand &amp; Dinner</span>
+          <div class="budget-track"><div class="budget-fill" style="left:35%;width:19%"></div></div>
+        </div>
+        <div class="budget-amount t-body"><b>90–140 €</b></div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-when">
+          <span class="budget-day t-body-strong">Tag 3</span>
+          <span class="budget-date t-caption">29. Juli</span>
+        </div>
+        <div class="budget-mid">
+          <span class="budget-label t-caption">Sightseeing &amp; Shopping</span>
+          <div class="budget-track"><div class="budget-fill" style="left:69%;width:31%"></div></div>
+        </div>
+        <div class="budget-amount t-body"><b>180–260 €</b></div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-when">
+          <span class="budget-day t-body-strong">Tag 4</span>
+          <span class="budget-date t-caption">30. Juli</span>
+        </div>
+        <div class="budget-mid">
+          <span class="budget-label t-caption">Brunch, Dinner &amp; Club</span>
+          <div class="budget-track"><div class="budget-fill" style="left:58%;width:31%"></div></div>
+        </div>
+        <div class="budget-amount t-body"><b>150–230 €</b></div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-when">
+          <span class="budget-day t-body-strong">Tag 5</span>
+          <span class="budget-date t-caption">31. Juli</span>
+        </div>
+        <div class="budget-mid">
+          <span class="budget-label t-caption">Strand &amp; CDLC</span>
+          <div class="budget-track"><div class="budget-fill" style="left:35%;width:23%"></div></div>
+        </div>
+        <div class="budget-amount t-body"><b>90–150 €</b></div>
+      </div>
+      <div class="budget-row">
+        <div class="budget-when">
+          <span class="budget-day t-body-strong">Tag 6</span>
+          <span class="budget-date t-caption">1. August</span>
+        </div>
+        <div class="budget-mid">
+          <span class="budget-label t-caption">Abreise</span>
+          <div class="budget-track"><div class="budget-fill" style="left:0%;width:4%"></div></div>
+        </div>
+        <div class="budget-amount t-body"><b>≈ 10 €</b></div>
+      </div>
+    </div>
+
+    <div class="budget-foot">
+      <span class="t-caption">Reise gesamt (2 Personen) · variable Kosten <b>1.070–1.610 €</b> + Fixkosten <b>3.079 €</b></span>
+      <span class="t-caption">≈ <b>4.150–4.690 €</b> gesamt</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== IDEEN (dark photo) — TikTok-Tool ===================== -->
+<section id="ideen" class="tile tile--dark tile--image">
+  <div class="tile-bg tile-bg--photo bg-aerial" aria-hidden="true"></div>
+  <div class="tile-inner">
+    <span class="eyebrow t-caption-strong">Sammeln</span>
+    <h2 class="headline t-display">Ideen.</h2>
+    <p class="lead t-lead">Was wir noch machen könnten. Einen TikTok-Link einfügen — Creator, Beschreibung und Vorschaubild werden automatisch ausgelesen. Oder einfach eine eigene Idee eintippen.</p>
+
+    <div class="idea-tool">
+      <div class="idea-input">
+        <input id="ideaUrl" class="idea-field" type="text" inputmode="url" autocomplete="off" placeholder="TikTok-Link einfügen oder eigene Idee schreiben …" aria-label="TikTok-Link oder Idee">
+        <button id="ideaAdd" class="btn idea-add" type="button">Hinzufügen</button>
+      </div>
+      <p id="ideaHint" class="idea-hint t-fine">Tipp: TikTok-Link reinkopieren — der Rest passiert automatisch. Eigene Ideen werden in diesem Browser gespeichert.</p>
+    </div>
+
+    <div id="ideaList" class="cards idea-cards" aria-live="polite"><article class="card idea-card"><h3 class="card-name t-body-strong">Bunkers del Carmel</h3><p class="card-desc t-body idea-cap">Bester Sonnenuntergang über die ganze Stadt. Snacks &amp; Getränke mitnehmen, früh hochlaufen.</p><p class="card-meta t-caption">Aussicht</p></article><article class="card idea-card"><h3 class="card-name t-body-strong">Tapas-Tour durch El Born</h3><p class="card-desc t-body idea-cap">Von Bar zu Bar durch die Altstadtgassen — kleine Teller, Vermut, gute Stimmung.</p><p class="card-meta t-caption">Essen</p></article><article class="card idea-card"><h3 class="card-name t-body-strong">Seilbahn auf den Montjuïc</h3><p class="card-desc t-body idea-cap">Mit der Telefèric hoch, Castell und Gärten oben, Blick über den Hafen.</p><p class="card-meta t-caption">Halber Tag</p></article><article class="card idea-card"><h3 class="card-name t-body-strong">Markt La Boqueria</h3><p class="card-desc t-body idea-cap">Früh hin, frische Säfte und Jamón, danach ein Bummel über La Rambla.</p><p class="card-meta t-caption">Vormittag</p></article></div>
+  </div>
+</section>
+
 <!-- ===================== FOOTER (parchment) ===================== -->
 <footer class="footer">
   <div class="footer-inner">
@@ -826,28 +995,30 @@ ul{list-style:none}
       <div>
         <h4 class="t-caption-strong">Tage</h4>
         <ul class="footer-links">
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag1">Tag 1 — Ankunft</a></li>
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag2">Tag 2 — Strand &amp; Dinner</a></li>
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag3">Tag 3 — Sightseeing &amp; Shopping</a></li>
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag4">Tag 4 — Brunch, Dinner &amp; Club</a></li>
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag5">Tag 5 — Strand &amp; CDLC</a></li>
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tag6">Tag 6 — Abreise</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag1">Tag 1 — Ankunft</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag2">Tag 2 — Strand &amp; Dinner</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag3">Tag 3 — Sightseeing &amp; Shopping</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag4">Tag 4 — Brunch, Dinner &amp; Club</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag5">Tag 5 — Strand &amp; CDLC</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tag6">Tag 6 — Abreise</a></li>
         </ul>
       </div>
       <div>
         <h4 class="t-caption-strong">Themen</h4>
         <ul class="footer-links">
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#essen">Essen &amp; Bars</a></li>
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#straende">Strände</a></li>
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tipps">Tipps</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#essen">Essen &amp; Bars</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#straende">Strände</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#tipps">Tipps</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#budget">Budget</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#ideen">Ideen</a></li>
         </ul>
       </div>
       <div>
         <h4 class="t-caption-strong">Reise</h4>
         <ul class="footer-links">
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#uebersicht">Auf einen Blick</a></li>
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#uebersicht">Hotel &amp; Flüge</a></li>
-          <li><a href="file:///C:/Users/gusta/Downloads/index_1.html#tipps">Budget</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#uebersicht">Auf einen Blick</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#uebersicht">Hotel &amp; Flüge</a></li>
+          <li><a href="file:///C:/Users/gusta/Downloads/barcelona-reiseplan.html#budget">Budget</a></li>
         </ul>
       </div>
     </div>
@@ -858,6 +1029,107 @@ ul{list-style:none}
   </div>
 </footer>
 
+<script>
+(function(){
+  var KEY='bcn-ideen-v1';
+  var list=document.getElementById('ideaList');
+  var input=document.getElementById('ideaUrl');
+  var addBtn=document.getElementById('ideaAdd');
+  var hint=document.getElementById('ideaHint');
+  if(!list||!input||!addBtn) return;
+  var DEFAULT_HINT=hint?hint.textContent:'';
+
+  /* Baked-in Starter-Ideen — sehen alle Freunde */
+  var DEFAULTS=[
+    {t:'Bunkers del Carmel',d:'Bester Sonnenuntergang über die ganze Stadt. Snacks & Getränke mitnehmen, früh hochlaufen.',m:'Aussicht'},
+    {t:'Tapas-Tour durch El Born',d:'Von Bar zu Bar durch die Altstadtgassen — kleine Teller, Vermut, gute Stimmung.',m:'Essen'},
+    {t:'Seilbahn auf den Montjuïc',d:'Mit der Telefèric hoch, Castell und Gärten oben, Blick über den Hafen.',m:'Halber Tag'},
+    {t:'Markt La Boqueria',d:'Früh hin, frische Säfte und Jamón, danach ein Bummel über La Rambla.',m:'Vormittag'}
+  ];
+
+  function loadUsers(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
+  function saveUsers(a){try{localStorage.setItem(KEY,JSON.stringify(a))}catch(e){}}
+  function esc(s){return (s==null?'':String(s)).replace(/[&<>"']/g,function(c){return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c];});}
+  function isTikTok(u){return /(^|\.)tiktok\.com|vm\.tiktok|vt\.tiktok/i.test(u);}
+  function looksUrl(u){return /^https?:\/\//i.test(u);}
+  function hostOf(u){try{return new URL(u).hostname.replace(/^www\./,'');}catch(e){return 'Link';}}
+
+  function defaultCard(it){
+    return '<article class="card idea-card">'+
+      '<h3 class="card-name t-body-strong">'+esc(it.t)+'</h3>'+
+      '<p class="card-desc t-body idea-cap">'+esc(it.d)+'</p>'+
+      '<p class="card-meta t-caption">'+esc(it.m)+'</p></article>';
+  }
+
+  function userCard(it,i){
+    var p='';
+    if(it.thumb){p+='<img class="idea-thumb" loading="lazy" alt="" referrerpolicy="no-referrer" src="'+esc(it.thumb)+'" onerror="this.style.display=\'none\'">';}
+    var heading = it.author ? ('@'+esc(it.author))
+      : (it.note ? esc(it.note.split('\n')[0].slice(0,70)) : (it.tiktok?'TikTok-Idee':'Idee'));
+    p+='<h3 class="card-name t-body-strong">'+heading+'</h3>';
+    if(it.cap){p+='<p class="card-desc t-body idea-cap">'+esc(it.cap)+'</p>';}
+    else if(it.tiktok&&!it.author){p+='<p class="card-desc t-body idea-cap">Details konnten nicht automatisch geladen werden — Link gespeichert.</p>';}
+    else if(it.note&&!it.author){p+='<p class="card-meta t-caption idea-author">'+esc(hostOf(it.url||''))+'</p>';}
+    p+='<div class="idea-row">';
+    if(it.url){p+='<a class="lnk" target="_blank" rel="noopener" href="'+esc(it.url)+'">'+(it.tiktok?'Auf TikTok ansehen':'Öffnen')+'</a>';}
+    p+='<button class="idea-del" type="button" data-i="'+i+'" aria-label="Idee entfernen">Entfernen</button>';
+    p+='</div>';
+    return '<article class="card idea-card">'+p+'</article>';
+  }
+
+  function render(){
+    var users=loadUsers();
+    var html=DEFAULTS.map(defaultCard).join('');
+    for(var i=0;i<users.length;i++){html+=userCard(users[i],i);}
+    list.innerHTML=html;
+    var dels=list.querySelectorAll('.idea-del');
+    for(var k=0;k<dels.length;k++){
+      dels[k].addEventListener('click',function(){
+        var i=parseInt(this.getAttribute('data-i'),10);
+        var a=loadUsers(); a.splice(i,1); saveUsers(a); render();
+      });
+    }
+  }
+
+  function fetchTok(url){
+    var api='https://www.tiktok.com/oembed?url='+encodeURIComponent(url);
+    var ctrl=('AbortController' in window)?new AbortController():null;
+    var timer=ctrl?setTimeout(function(){try{ctrl.abort()}catch(e){}},7000):null;
+    return fetch(api,ctrl?{signal:ctrl.signal}:undefined).then(function(r){
+      if(timer)clearTimeout(timer);
+      if(!r.ok)throw 0; return r.json();
+    }).then(function(j){
+      return {author:j.author_name||'',cap:j.title||'',thumb:j.thumbnail_url||''};
+    }).catch(function(){if(timer)clearTimeout(timer);return null;});
+  }
+
+  function flash(msg){if(hint){hint.textContent=msg;setTimeout(function(){hint.textContent=DEFAULT_HINT;},4500);}}
+
+  function add(){
+    var v=(input.value||'').trim();
+    if(!v)return;
+    if(isTikTok(v)&&looksUrl(v)){
+      addBtn.disabled=true;
+      if(hint)hint.textContent='Lese TikTok-Infos …';
+      fetchTok(v).then(function(d){
+        var a=loadUsers();
+        if(d&&(d.author||d.cap||d.thumb)){a.push({url:v,tiktok:true,author:d.author,cap:d.cap,thumb:d.thumb});}
+        else{a.push({url:v,tiktok:true});}
+        saveUsers(a); input.value=''; addBtn.disabled=false; render();
+        flash(d?'Hinzugefügt ✓':'Hinzugefügt — Details ließen sich nicht automatisch laden, der Link ist aber gespeichert.');
+      });
+    }else if(looksUrl(v)){
+      var a=loadUsers(); a.push({url:v,note:hostOf(v)}); saveUsers(a); input.value=''; render(); flash('Link hinzugefügt ✓');
+    }else{
+      var b=loadUsers(); b.push({note:v}); saveUsers(b); input.value=''; render(); flash('Idee hinzugefügt ✓');
+    }
+  }
+
+  addBtn.addEventListener('click',add);
+  input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();add();}});
+  render();
+})();
+</script>
 
 
 </body></html>
